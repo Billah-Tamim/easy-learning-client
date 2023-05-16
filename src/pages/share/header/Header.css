@@ -1,0 +1,7 @@
+.nav-container a {
+    text-decoration: none;
+    color: rgb(100, 209, 236);
+}
+.nav-container a:hover{
+    color: rgb(224, 244, 255);
+}
