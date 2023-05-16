@@ -14,7 +14,7 @@ const Header = () => {
         <Navbar className='nav-container' bg="dark" variant="dark" expand="lg">
             <Container fluid>
                 <Navbar.Brand href="#" className='me-5'>
-                    Easy Learning
+                    <Link to='/'>Easy Learning</Link>
                     <Image
                         src={'https://www.nicepng.com/png/detail/119-1192701_it-technology-technology-icon-png.png'}
                         roundedCircle
@@ -30,13 +30,13 @@ const Header = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Link className='me-4'>Courses</Link>
-                        <Link className='me-4'>FAQ</Link>
-                        <Link className='me-4'>About Us</Link>
+                        <Link to='/courses' className='me-4'>Courses</Link>
+                        <Link to='/faq' className='me-4'>FAQ</Link>
+                        <Link to='/about' className='me-4'>About Us</Link>
 
                         <>
-                            <Button className='me-3' variant="outline-info">Log In</Button>
-                            <Button variant="outline-info">Register</Button>
+                            <Link to='/login'><Button className='me-3' variant="outline-info">Log In</Button></Link>
+                            <Link to='/register'><Button variant="outline-info">Register</Button></Link>
                         </>
 
                     </Nav>

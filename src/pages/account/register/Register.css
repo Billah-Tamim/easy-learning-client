@@ -1,0 +1,5 @@
+.register-container{
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px 5px rgba(82, 126, 157, 0.668);
+}

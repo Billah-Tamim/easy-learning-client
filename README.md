@@ -1,12 +1,12 @@
-# Getting Started with Create React App
+# Source code link on git hub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Git code for client site [see code](https://github.com/Billah-Tamim/easy-learning-client).
 
-## Available Scripts
+## Live site link
 
 In the project directory, you can run:
 
-### `npm start`
+### locally stored this project
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
