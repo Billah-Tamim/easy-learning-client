@@ -1,25 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Login.css';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-    const {logIn} = useContext(AuthContext);
+    const {logIn, user} = useContext(AuthContext);
+
+    const [errorText, setErrorText] = useState('');
+
+    const navigate = useNavigate();
     
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+        setErrorText('');
 
         logIn(email, password)
         .then(result=>{
             const user = result.user;
             console.log(user);
             form.reset();
+            if(user?.emailVerified)
+            {
+                navigate('/');
+            }
+            else{
+                toast.error('please verify your email first.');
+            }
         })
-        .catch(error=> console.error(error));
+        .catch(error=> {
+            setErrorText(error.message);
+        });
 
     }
     return (
@@ -38,9 +54,10 @@ const Login = () => {
             <Button variant="success" type="submit">
                 Log in
             </Button><br />
-            <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+            <Form.Text className="text-danger">
+                {errorText}
             </Form.Text>
+            <p>If you don't have an account.. <Link to='/register'>click here</Link></p>
         </Form>
     );
 };

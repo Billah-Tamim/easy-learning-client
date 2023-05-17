@@ -5,11 +5,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Register.css';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 
 const Register = () => {
     const { createUser, addData, emailVerification } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [errorText, setErrortext] = useState('');
     const [accept, setAccept] = useState(false);
@@ -30,6 +32,7 @@ const Register = () => {
                 form.reset();
                 manageUser(userObj);
                 verifyEmail();
+                navigate('/login');
             })
             .catch(error => {
                 setErrortext(error.message);
@@ -46,7 +49,7 @@ const Register = () => {
     const verifyEmail = ()=>{
         emailVerification()
         .then(result=>{
-
+            toast.success('Please check your email to verify account!');
         })
     }
 
@@ -89,6 +92,7 @@ const Register = () => {
             <Form.Text className="text-danger">
                 {errorText}
             </Form.Text>
+            <p>If you already have an account.. <Link to='/login'>click here</Link></p>
         </Form>
     );
 };
