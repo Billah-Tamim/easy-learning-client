@@ -1,13 +1,60 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Register.css';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
+
 
 const Register = () => {
+    const { createUser, addData, emailVerification } = useContext(AuthContext);
+
+    const [errorText, setErrortext] = useState('');
+    const [accept, setAccept] = useState(false);
+
+    const handleRegister = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const name = form.name.value;
+        const photoURL = form.photoUrl.value;
+        const userObj = { displayName: name, photoURL: photoURL };
+        setErrortext('');
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                manageUser(userObj);
+                verifyEmail();
+            })
+            .catch(error => {
+                setErrortext(error.message);
+            });
+
+    }
+    const manageUser = userObj => {
+        addData(userObj)
+            .then(() => { })
+            .catch(error => {
+                setErrortext(error.message);
+            });
+    }
+    const verifyEmail = ()=>{
+        emailVerification()
+        .then(result=>{
+
+        })
+    }
+
+    const handleCheck = event =>{
+        setAccept(event.target.checked);
+    }
     return (
-        <Form className='w-50 mx-auto mt-5 p-4 register-container'>
+        <Form onSubmit={handleRegister} className='w-50 mx-auto mt-5 p-4 register-container'>
             <h3 className='text-center text-primary'>Registration</h3>
 
             <Row className="g-2 mb-3">
@@ -23,19 +70,24 @@ const Register = () => {
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control name='email' type="email" placeholder="Enter email" required/>
+                <Form.Control name='email' type="email" placeholder="Enter email" required />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control name='password' type="password" placeholder="Password" required/>
+                <Form.Control name='password' type="password" placeholder="Password" required />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Form.Group  className="mb-3 d-flex" controlId="formBasicCheckbox">
+                <Form.Check onClick={handleCheck} type="checkbox" label="Accept all" /> 
+                <Link className='ms-1' to='/conditions'>terms & conditions</Link>
+            </Form.Group>
+
+            <Button variant="primary" type="submit" disabled={!accept}>
                 Register
             </Button><br />
-            <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+            <Form.Text className="text-danger">
+                {errorText}
             </Form.Text>
         </Form>
     );

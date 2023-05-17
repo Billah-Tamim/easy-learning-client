@@ -6,6 +6,7 @@ import Courses from "../../pages/courses/courses/Courses";
 import Faq from "../../pages/faq/Faq";
 import AboutUs from "../../pages/aboutUs/AboutUs";
 import Home from "../../pages/home/Home";
+import Conditions from "../../pages/account/Conditions/Conditions";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path:'/about',
                 element:<AboutUs></AboutUs>
+            },
+            {
+                path:'/conditions',
+                element:<Conditions></Conditions>
             }
         ]
     }
