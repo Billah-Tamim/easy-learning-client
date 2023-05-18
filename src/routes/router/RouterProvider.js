@@ -7,6 +7,7 @@ import Faq from "../../pages/faq/Faq";
 import AboutUs from "../../pages/aboutUs/AboutUs";
 import Home from "../../pages/home/Home";
 import Conditions from "../../pages/account/Conditions/Conditions";
+import Details from "../../pages/courses/details/Details";
 
 export const router = createBrowserRouter([
     {
@@ -26,8 +27,19 @@ export const router = createBrowserRouter([
                 element:<Register></Register>
             },
             {
+                path:'/courses/:id',
+                element:<Courses></Courses>,
+                loader: ({params})=> fetch(`http://localhost:5000/courses/${params.id}`)
+            },
+            {
                 path:'/courses',
-                element:<Courses></Courses>
+                element:<Courses></Courses>,
+                loader: ()=> fetch(`http://localhost:5000/courses`)
+            },
+            {
+                path:'/course/:id',
+                element:<Details></Details>,
+                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`)
             },
             {
                 path:'/faq',
