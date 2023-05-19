@@ -11,7 +11,7 @@ const Courses = () => {
     const allCourses = useLoaderData();
     return (
         <Container className='mt-5'>
-            <Row className='justify-content-center'>
+            <Row className=''>
                 <Col md={3}>
                     <Catagory></Catagory>
                 </Col>

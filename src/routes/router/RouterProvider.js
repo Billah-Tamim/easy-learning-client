@@ -29,17 +29,17 @@ export const router = createBrowserRouter([
             {
                 path:'/courses/:id',
                 element:<Courses></Courses>,
-                loader: ({params})=> fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({params})=> fetch(`https://easy-learning-server-ten.vercel.app/courses/${params.id}`)
             },
             {
                 path:'/courses',
                 element:<Courses></Courses>,
-                loader: ()=> fetch(`http://localhost:5000/courses`)
+                loader: ()=> fetch(`https://easy-learning-server-ten.vercel.app/courses`)
             },
             {
                 path:'/course/:id',
                 element:<Details></Details>,
-                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({params}) => fetch(`https://easy-learning-server-ten.vercel.app/course/${params.id}`)
             },
             {
                 path:'/faq',

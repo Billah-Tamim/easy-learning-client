@@ -4,7 +4,7 @@ Git code for client site [see code](https://github.com/Billah-Tamim/easy-learnin
 
 ## Live site link
 
-In the project directory, you can run:
+server side deploy link on vercel[see api](https://easy-learning-server-ten.vercel.app/).
 
 ### locally stored this project
 

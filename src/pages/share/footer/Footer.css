@@ -1,0 +1,27 @@
+.footer-container li{
+    color: rgb(251, 162, 233);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.social .fi{
+    color: rgb(216, 216, 216);
+    font-size: 30px;
+}
+.social{
+    margin-bottom: 20px;
+}
+.social span{
+    color: rgb(128, 255, 215);
+    font-size: 18px;
+}
+.news img{
+    width: 70px;
+}
+.news{
+    box-shadow: 5px 5px 10px 2px rgb(51, 60, 64);
+    padding: 3px;
+    color: rgb(255, 219, 157);
+}
+.footer-container h4{
+    color: antiquewhite;
+}
