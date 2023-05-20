@@ -8,6 +8,7 @@ import AboutUs from "../../pages/aboutUs/AboutUs";
 import Home from "../../pages/home/Home";
 import Conditions from "../../pages/account/Conditions/Conditions";
 import Details from "../../pages/courses/details/Details";
+import PrivateRouter from "../private/PrivateRouter";
 
 export const router = createBrowserRouter([
     {
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/course/:id',
-                element:<Details></Details>,
+                element:<PrivateRouter><Details></Details></PrivateRouter>,
                 loader: ({params}) => fetch(`https://easy-learning-server-ten.vercel.app/course/${params.id}`)
             },
             {

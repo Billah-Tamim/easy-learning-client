@@ -1,18 +1,22 @@
-# Source code link on git hub
+### Source code link on git hub
 
 Git code for client site [see code](https://github.com/Billah-Tamim/easy-learning-client).
 
-## Live site link
+#### Live site link
+client side live website on [firebase](https://easy-learning-client.web.app/).
+
+### server side code in github
+
+
+### Vercel server side live link
 
 server side deploy link on vercel[see api](https://easy-learning-server-ten.vercel.app/).
 
 ### locally stored this project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+n63-module
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+
 
 ### `npm test`
 

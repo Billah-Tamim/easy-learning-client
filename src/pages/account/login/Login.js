@@ -3,15 +3,18 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Login.css';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 const Login = () => {
     const {logIn, user} = useContext(AuthContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
+
     const [errorText, setErrorText] = useState('');
 
-    const navigate = useNavigate();
     
     const handleLogin = event => {
         event.preventDefault();
@@ -27,7 +30,7 @@ const Login = () => {
             form.reset();
             if(user?.emailVerified)
             {
-                navigate('/');
+                navigate(from, {replace: true});
             }
             else{
                 toast.error('please verify your email first.');

@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <Row className='footer-container bg-dark p-5 justify-content-center'>
+        <Row className='mt-5 footer-container bg-dark p-5 justify-content-center'>
             <Col md={3}>
                 <h4>Our Services</h4>
                 <li>Get job related courses</li>
